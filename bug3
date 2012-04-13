@@ -1,0 +1,146 @@
+import info.gridworld.actor.ActorWorld;
+import info.gridworld.actor.Bug;
+import info.gridworld.grid.Location;
+import info.gridworld.grid.BoundedGrid;
+import java.awt.Color;
+
+class Ibug extends Bug
+{
+
+	int steps=0;
+	
+   
+   public Ibug()
+   {
+   	//face down
+   	setDirection(180);
+   }
+
+   
+   public void act()
+   {
+       //draw vertical line
+   	if( steps < 5 )
+   	{
+   		move();
+   		steps++;
+   	}
+   	
+   	
+   	
+   }
+}
+class Rbug extends Bug
+{
+
+	int steps=0;
+	
+   
+   public Rbug()
+   {
+   	//face right
+   	setDirection(90);
+   }
+
+   
+   public void act()
+   {
+       //draw horizontal line
+   	if( steps < 4)
+   	{
+   		move();
+   		steps++;
+   	}
+   	
+   	//change direction
+   	if( steps == 4 )
+   	{
+   		setDirection(180);
+   	}
+   	
+   	//draw bottom line
+   	if( steps >= 4 && steps < 6)
+   	{
+   		move();
+   		steps++;
+   	}
+   	if( steps == 6)
+   	{
+   		setDirection(270);
+   	}
+	if( steps >= 6 && steps < 10)
+   	{
+   		move();
+   		steps++;
+   	}
+	if( steps == 10)
+   	{
+   		setDirection(0);
+   	}
+	if( steps >= 10 && steps < 12)
+   	{
+   		move();
+   		steps++;
+   	}
+	if( steps == 12)
+   	{
+   		setDirection(180);
+   	}
+	if( steps >= 12 && steps < 17)
+   	{
+   		move();
+   		steps++;
+   	}
+	if( steps == 17)
+   	{
+		setDirection(0);
+
+   		
+   	}
+	if( steps >= 17 && steps < 20)
+   	{
+   		move();
+   		steps++;
+	
+	
+   }
+   if( steps == 20)
+   {
+		setDirection(135);
+   
+   }
+   if( steps >= 20 && steps < 23)
+   {
+	   move();
+  	   steps++;
+   
+   }
+
+   		
+   }
+   
+}
+
+
+public class bug3
+{
+	public static void main(String[] args)
+	{
+		//setup Bugs
+		Ibug bug1 = new Ibug();
+		bug1.setColor(Color.BLUE);
+		Location bug1location = new Location(1, 1);
+		Rbug bug2 = new Rbug();
+		bug2.setColor(Color.RED);
+		Location bug2location = new Location(1, 3);
+		
+		//setup Grid
+		BoundedGrid myGrid = new BoundedGrid(10, 20);
+		
+		//setup World
+		ActorWorld world = new ActorWorld(myGrid);
+		world.add(bug1location, bug1);
+		world.add(bug2location, bug2);
+		world.show();
+	}
+}

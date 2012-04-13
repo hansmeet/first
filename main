@@ -1,0 +1,48 @@
+import info.gridworld.actor.ActorWorld;
+import info.gridworld.actor.Bug;
+import info.gridworld.grid.Location;
+import info.gridworld.grid.BoundedGrid;
+import info.gridworld.grid.UnboundedGrid;
+
+import java.awt.Color;
+
+
+public class main
+{
+	public static void main(String[] args)
+	{
+		//setup Bugs
+		Ubug bug1 = new Ubug();
+		bug1.setColor(Color.BLUE);
+		Location bug1location = new Location(1, 1);
+		Nbug bug2 = new Nbug();
+		bug2.setColor(Color.RED);
+		Location bug2location = new Location(6, 6);
+		Tbug bug3 = new Tbug();
+		bug1.setColor(Color.BLUE);
+		Location bug3location = new Location (8, 1);
+		Ebug bug4 = new Ebug();
+		bug2.setColor(Color.RED);
+		Location bug4location = new Location(8, 13);
+		Ibug bug5 = new Ibug();
+		bug5.setColor(Color.BLUE);
+		Location bug5location = new Location(14, 1);
+		Rbug bug6 = new Rbug();
+		bug6.setColor(Color.RED);
+		Location bug6location = new Location(14, 3);
+		
+		//setup Grid
+		UnboundedGrid myGrid = new UnboundedGrid();
+		
+		//setup World
+		ActorWorld world = new ActorWorld(myGrid);
+		world.add(bug1location, bug1);
+		world.add(bug2location, bug2);
+		world.add(bug3location, bug3);
+		world.add(bug4location, bug4);
+		world.add(bug5location, bug5);
+		world.add(bug6location, bug6);
+		
+		world.show();
+	}
+}
