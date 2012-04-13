@@ -1,0 +1,130 @@
+
+import info.gridworld.actor.ActorWorld;
+import info.gridworld.actor.Bug;
+import info.gridworld.grid.Location;
+import info.gridworld.grid.BoundedGrid;
+import java.awt.Color;
+
+class Ubug extends Bug
+{
+
+	int steps=0;
+	
+   /**
+    * Constructor
+    */
+   public Ubug()
+   {
+   	//face down
+   	setDirection(180);
+   }
+
+   /**
+    * Does something when step is pressed.
+    */
+   public void act()
+   {
+       //draw vertical line
+   	if( steps < 5 )
+   	{
+   		move();
+   		steps++;
+   	}
+   	
+   	//change direction
+   	if( steps == 5 )
+   	{
+   		setDirection(90);
+   	}
+   	
+   	//draw bottom line
+   	if( steps >= 5 && steps < 8)
+   	{
+   		move();
+   		steps++;
+   	}
+   	if( steps == 8)
+   	{
+   		setDirection(0);
+   	}
+	if( steps >= 8 && steps < 13)
+   	{
+   		move();
+   		steps++;
+   	}
+   	
+   }
+}
+class Nbug extends Bug
+{
+
+	int steps=0;
+	
+   /**
+    * Constructor
+    */
+   public Nbug()
+   {
+   	//face down
+   	setDirection(45);
+   }
+
+   /**
+    * Does something when step is pressed.
+    */
+   public void act()
+   {
+       //draw vertical line
+   	if( steps < 3)
+   	{
+   		move();
+   		steps++;
+   	}
+   	
+   	//change direction
+   	if( steps == 3 )
+   	{
+   		setDirection(135);
+   	}
+   	
+   	//draw bottom line
+   	if( steps >= 3 && steps < 6)
+   	{
+   		move();
+   		steps++;
+   	}
+   	if( steps == 6)
+   	{
+   		setDirection(45);
+   	}
+	if( steps >= 6 && steps < 9)
+   	{
+   		move();
+   		steps++;
+   	}
+   	
+   }
+}
+
+public class bug1
+{
+	public static void main(String[] args)
+	{
+		//setup LBug
+		Ubug bug1 = new Ubug();
+		bug1.setColor(Color.BLUE);
+		Location bug1location = new Location(1, 1);
+		Nbug bug2 = new Nbug();
+		bug2.setColor(Color.RED);
+		Location bug2location = new Location(6, 6);
+		
+		//setup Grid
+		BoundedGrid myGrid = new BoundedGrid(10, 20);
+		
+		//setup World
+		ActorWorld world = new ActorWorld(myGrid);
+		world.add(bug1location, bug1);
+		world.add(bug2location, bug2);
+		world.show();
+	}
+}
